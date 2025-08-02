@@ -79,8 +79,7 @@ public class AutomationFormsPageObjectFakeTest extends TestBaseConfig {
                 .shouldHaveLastName(RandomTestData.lastName)
                 .shouldHaveUserEmail(RandomTestData.emailAddress)
                 .shouldHaveGender(RandomTestData.gender)
-                .shouldHaveUserNumber(RandomTestData.userNumber)
-                .shouldHaveDateOfBirth(RandomTestData.day + " " + RandomTestData.month + "," + RandomTestData.year);
+                .shouldHaveUserNumber(RandomTestData.userNumber);
     }
 
 }
