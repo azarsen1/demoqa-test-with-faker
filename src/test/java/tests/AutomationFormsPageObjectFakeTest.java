@@ -8,6 +8,7 @@ public class AutomationFormsPageObjectFakeTest extends TestBaseConfig {
 
     RegistrationFormPage RegistrationFormPage = new RegistrationFormPage();
     RandomTestData RandomTestData = new utils.RandomTestData();
+
     @Test
     void smokeFillFormTest() {
 
@@ -31,7 +32,7 @@ public class AutomationFormsPageObjectFakeTest extends TestBaseConfig {
                 .checkResult("Student Email", RandomTestData.emailAddress)
                 .checkResult("Gender", RandomTestData.gender)
                 .checkResult("Mobile", RandomTestData.userNumber)
-                .checkResult("Date of Birth", RandomTestData.day + " " + RandomTestData.month + " " + RandomTestData.year)
+                .checkResult("Date of Birth", RandomTestData.day + " " + RandomTestData.month + "," + RandomTestData.year)
                 .checkResult("Subjects", RandomTestData.subjects)
                 .checkResult("Hobbies", RandomTestData.hobbiesCheckbox)
                 .checkResult("Picture", RandomTestData.uploadPicture)
@@ -45,19 +46,19 @@ public class AutomationFormsPageObjectFakeTest extends TestBaseConfig {
     void minFillFormTestTest() {
         RegistrationFormPage.openPage()
                 .removeBanner()
-                .setFirstName("A")
-                .setLastName("A")
-                .setUserEmail("a@m.ru")
-                .setGender("Male")
-                .setUserNumber("8937342615")
-                .setDateOfBirth("21", "April", "1996")
+                .setFirstName(RandomTestData.firstName)
+                .setLastName(RandomTestData.lastName)
+                .setUserEmail(RandomTestData.emailAddress)
+                .setGender(RandomTestData.gender)
+                .setUserNumber(RandomTestData.userNumber)
+                .setDateOfBirth(RandomTestData.day, RandomTestData.month, RandomTestData.year)
                 .clickSubmit();
 
-        RegistrationFormPage.checkResult("Student Name", "A A")
-                .checkResult("Student Email", "a@m.ru")
-                .checkResult("Gender", "Male")
-                .checkResult("Mobile", "8937342615")
-                .checkResult("Date of Birth", "21 April,1996");
+        RegistrationFormPage.checkResult("Student Name", RandomTestData.firstName + " " + RandomTestData.lastName)
+                .checkResult("Student Email", RandomTestData.emailAddress)
+                .checkResult("Gender", RandomTestData.gender)
+                .checkResult("Mobile", RandomTestData.userNumber)
+                .checkResult("Date of Birth", RandomTestData.day + " " + RandomTestData.month + "," + RandomTestData.year);
 
 
     }
@@ -66,20 +67,20 @@ public class AutomationFormsPageObjectFakeTest extends TestBaseConfig {
     void negativeFillFormTestTest() {
         RegistrationFormPage.openPage()
                 .removeBanner()
-                .setFirstName("")
-                .setLastName("A")
-                .setUserEmail("a@m.ru")
-                .setGender("Male")
-                .setUserNumber("8937342615")
-                .setDateOfBirth("21", "April", "1996")
+                .setFirstName(RandomTestData.invalidFirstName)
+                .setLastName(RandomTestData.lastName)
+                .setUserEmail(RandomTestData.emailAddress)
+                .setGender(RandomTestData.gender)
+                .setUserNumber(RandomTestData.userNumber)
+                .setDateOfBirth(RandomTestData.day, RandomTestData.month, RandomTestData.year)
                 .clickSubmit();
 
-        RegistrationFormPage.shouldHaveFirstName("")
-                .shouldHaveLastName("A")
-                .shouldHaveUserEmail("a@m.ru")
-                .shouldHaveGender("Male")
-                .shouldHaveDateOfBirth("21 Apr 1996")
-        ;
+        RegistrationFormPage.shouldHaveFirstName(RandomTestData.invalidFirstName)
+                .shouldHaveLastName(RandomTestData.lastName)
+                .shouldHaveUserEmail(RandomTestData.emailAddress)
+                .shouldHaveGender(RandomTestData.gender)
+                .shouldHaveUserNumber(RandomTestData.userNumber)
+                .shouldHaveDateOfBirth(RandomTestData.day + " " + RandomTestData.month + "," + RandomTestData.year);
     }
 
 }

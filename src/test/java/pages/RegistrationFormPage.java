@@ -9,7 +9,7 @@ import pages.components.CalendarComponent;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
-        import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.executeJavaScript;
 import static com.codeborne.selenide.Condition.value;
@@ -132,6 +132,7 @@ public class RegistrationFormPage {
 
         return this;
     }
+
     public RegistrationFormPage shouldHaveFirstName(String expectedValue) {
 
         if (expectedValue.isEmpty()) {
@@ -173,5 +174,16 @@ public class RegistrationFormPage {
     public RegistrationFormPage shouldHaveDateOfBirth(String expectedDate) {
         $("#dateOfBirthInput").shouldHave(Condition.value(expectedDate));
         return this;
+    }
+
+    public RegistrationFormPage shouldHaveUserNumber(String expectedValue) {
+
+        if (expectedValue.isEmpty()) {
+            userNumberInput.shouldBe(Condition.empty);
+        } else {
+            userNumberInput.shouldHave(Condition.value(expectedValue));
+        }
+        return this;
+
     }
 }

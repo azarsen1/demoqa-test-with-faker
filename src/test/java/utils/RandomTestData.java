@@ -10,6 +10,7 @@ public class RandomTestData {
 
     Faker faker = new Faker(new Locale("en"));
     public String firstName = faker.name().firstName();
+    public String invalidFirstName = faker.options().option("", "   ", "1234", "#$%^?");
     public String lastName = faker.name().lastName();
     public String emailAddress = faker.internet().emailAddress();
     public String gender = faker.options().option("Male", "Female", "Other");
@@ -23,6 +24,10 @@ public class RandomTestData {
     public RandomTestData() {
         Calendar cal = Calendar.getInstance();
         cal.setTime(randomDate);
+
+        this.day = String.valueOf(cal.get(Calendar.DAY_OF_MONTH));
+        this.month = cal.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.ENGLISH);
+        this.year = String.valueOf(cal.get(Calendar.YEAR));
     }
 
     public String subjects = faker.options().
