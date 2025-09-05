@@ -38,7 +38,7 @@ public class RegistrationFormPage {
 
     public RegistrationFormPage openPage() {
         open("/automation-practice-form");
-        logger.info("Открытие формы: https://demoqa.com/automation-practice-form");
+        logger.info("Opening a form: https://demoqa.com/automation-practice-form");
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
         return this;
     }
@@ -47,7 +47,7 @@ public class RegistrationFormPage {
     public RegistrationFormPage removeBanner() {
         $("#fixedban").shouldBe(visible);
         $("footer").shouldBe(visible);
-        logger.info("Удаление баннеров со страницы");
+        logger.info("Removing banners from a page");
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
         return this;

@@ -8,14 +8,29 @@ import java.util.Locale;
 
 public class RandomTestData {
 
-    Faker faker = new Faker(new Locale("en"));
-    public String firstName = faker.name().firstName();
-    public String invalidFirstName = faker.options().option("", "   ", "1234", "#$%^?");
-    public String lastName = faker.name().lastName();
-    public String emailAddress = faker.internet().emailAddress();
-    public String gender = faker.options().option("Male", "Female", "Other");
-    public String userNumber = faker.phoneNumber().subscriberNumber(10);
-    public Date randomDate = faker.date().birthday(1, 100);
+    private final Faker faker = new Faker(new Locale("en"));
+
+    public String getFirstName() {
+        return faker.name().firstName();
+    }
+    public String getInvalidFirstName() {
+        return faker.options().option("", "   ", "1234", "#$%^?");
+    }
+    public String getLastName() {
+        return faker.name().lastName();
+    }
+    public String getEmailAddress()  {
+        return faker.internet().emailAddress();
+    }
+    public String getGender()  {
+        return faker.options().option("Male", "Female", "Other");
+    }
+    public String getUserNumber() {
+        return faker.phoneNumber().subscriberNumber(10);
+    }
+    public Date getRandomDate() {
+        return faker.date().birthday(1, 100);
+    }
 
     public String day;
     public String month;
@@ -23,22 +38,34 @@ public class RandomTestData {
 
     public RandomTestData() {
         Calendar cal = Calendar.getInstance();
-        cal.setTime(randomDate);
+        cal.setTime(getRandomDate());
 
         this.day = String.valueOf(cal.get(Calendar.DAY_OF_MONTH));
         this.month = cal.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.ENGLISH);
         this.year = String.valueOf(cal.get(Calendar.YEAR));
     }
 
-    public String subjects = faker.options().
-            option("Hindi", "English", "Maths", "Physics", "Chemistry", "Biology", "Computer Science",
-                    "Commerce", "Accounting", "Economics", "Arts", "Social Studies", "History", "Civics");
+    public String getSubjects() {
+        return faker.options().
+                option("Hindi", "English", "Maths", "Physics", "Chemistry", "Biology", "Computer Science",
+                        "Commerce", "Accounting", "Economics", "Arts", "Social Studies", "History", "Civics");
+    }
 
-    public String hobbiesCheckbox = faker.options().option("Sports", "Reading", "Music");
-    public String uploadPicture = faker.options().option("AGE_TEST.jpg", "arrow.png", "puzzle.webp");
-    public String currentAddress = faker.address().streetAddressNumber();
-    public String state = faker.options().option("NCR", "Uttar Pradesh", "Haryana", "Rajasthan");
-    public String city = getRandomCity(state);
+    public String getHobbiesCheckbox() {
+        return faker.options().option("Sports", "Reading", "Music");
+    }
+    public String getUploadPicture() {
+        return faker.options().option("AGE_TEST.jpg", "arrow.png", "puzzle.webp");
+    }
+    public String getCurrentAddress() {
+        return faker.address().streetAddressNumber();
+    }
+    public String getState() {
+        return faker.options().option("NCR", "Uttar Pradesh", "Haryana", "Rajasthan");
+    }
+    public String getCity() {
+        return getRandomCity(getState());
+    }
 
     public String getRandomCity(String state) {
         switch (state) {

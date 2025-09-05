@@ -14,30 +14,30 @@ public class AutomationFormsPageObjectFakeTest extends TestBaseConfig {
 
         RegistrationFormPage.openPage()
                 .removeBanner()
-                .setFirstName(RandomTestData.firstName)
-                .setLastName(RandomTestData.lastName)
-                .setUserEmail(RandomTestData.emailAddress)
-                .setGender(RandomTestData.gender)
-                .setUserNumber(RandomTestData.userNumber)
+                .setFirstName(RandomTestData.getFirstName())
+                .setLastName(RandomTestData.getLastName())
+                .setUserEmail(RandomTestData.getEmailAddress())
+                .setGender(RandomTestData.getGender())
+                .setUserNumber(RandomTestData.getUserNumber())
                 .setDateOfBirth(RandomTestData.day, RandomTestData.month, RandomTestData.year)
-                .setSubjects(RandomTestData.subjects)
-                .setHobbiesCheckbox(RandomTestData.hobbiesCheckbox)
-                .setUploadPicture(RandomTestData.uploadPicture)
-                .setCurrentAddress(RandomTestData.currentAddress)
-                .setState(RandomTestData.state)
-                .setCity(RandomTestData.city)
+                .setSubjects(RandomTestData.getSubjects())
+                .setHobbiesCheckbox(RandomTestData.getHobbiesCheckbox())
+                .setUploadPicture(RandomTestData.getUploadPicture())
+                .setCurrentAddress(RandomTestData.getCurrentAddress())
+                .setState(RandomTestData.getState())
+                .setCity(RandomTestData.getCity())
                 .clickSubmit();
 
-        RegistrationFormPage.checkResult("Student Name", RandomTestData.firstName + " " + RandomTestData.lastName)
-                .checkResult("Student Email", RandomTestData.emailAddress)
-                .checkResult("Gender", RandomTestData.gender)
-                .checkResult("Mobile", RandomTestData.userNumber)
+        RegistrationFormPage.checkResult("Student Name", RandomTestData.getFirstName() + " " + RandomTestData.getLastName())
+                .checkResult("Student Email", RandomTestData.getEmailAddress())
+                .checkResult("Gender", RandomTestData.getGender())
+                .checkResult("Mobile", RandomTestData.getUserNumber())
                 .checkResult("Date of Birth", RandomTestData.day + " " + RandomTestData.month + "," + RandomTestData.year)
-                .checkResult("Subjects", RandomTestData.subjects)
-                .checkResult("Hobbies", RandomTestData.hobbiesCheckbox)
-                .checkResult("Picture", RandomTestData.uploadPicture)
-                .checkResult("Address", RandomTestData.currentAddress)
-                .checkResult("State and City", RandomTestData.state + " " + RandomTestData.city);
+                .checkResult("Subjects", RandomTestData.getSubjects())
+                .checkResult("Hobbies", RandomTestData.getHobbiesCheckbox())
+                .checkResult("Picture", RandomTestData.getUploadPicture())
+                .checkResult("Address", RandomTestData.getCurrentAddress())
+                .checkResult("State and City", RandomTestData.getState() + " " + RandomTestData.getCity());
 
 
     }
@@ -46,18 +46,18 @@ public class AutomationFormsPageObjectFakeTest extends TestBaseConfig {
     void minFillFormTestTest() {
         RegistrationFormPage.openPage()
                 .removeBanner()
-                .setFirstName(RandomTestData.firstName)
-                .setLastName(RandomTestData.lastName)
-                .setUserEmail(RandomTestData.emailAddress)
-                .setGender(RandomTestData.gender)
-                .setUserNumber(RandomTestData.userNumber)
+                .setFirstName(RandomTestData.getFirstName())
+                .setLastName(RandomTestData.getLastName())
+                .setUserEmail(RandomTestData.getEmailAddress())
+                .setGender(RandomTestData.getGender())
+                .setUserNumber(RandomTestData.getUserNumber())
                 .setDateOfBirth(RandomTestData.day, RandomTestData.month, RandomTestData.year)
                 .clickSubmit();
 
-        RegistrationFormPage.checkResult("Student Name", RandomTestData.firstName + " " + RandomTestData.lastName)
-                .checkResult("Student Email", RandomTestData.emailAddress)
-                .checkResult("Gender", RandomTestData.gender)
-                .checkResult("Mobile", RandomTestData.userNumber)
+        RegistrationFormPage.checkResult("Student Name", RandomTestData.getFirstName() + " " + RandomTestData.getLastName())
+                .checkResult("Student Email", RandomTestData.getEmailAddress())
+                .checkResult("Gender", RandomTestData.getGender())
+                .checkResult("Mobile", RandomTestData.getUserNumber())
                 .checkResult("Date of Birth", RandomTestData.day + " " + RandomTestData.month + "," + RandomTestData.year);
 
 
@@ -67,19 +67,19 @@ public class AutomationFormsPageObjectFakeTest extends TestBaseConfig {
     void negativeFillFormTestTest() {
         RegistrationFormPage.openPage()
                 .removeBanner()
-                .setFirstName(RandomTestData.invalidFirstName)
-                .setLastName(RandomTestData.lastName)
-                .setUserEmail(RandomTestData.emailAddress)
-                .setGender(RandomTestData.gender)
-                .setUserNumber(RandomTestData.userNumber)
+                .setFirstName(RandomTestData.getInvalidFirstName())
+                .setLastName(RandomTestData.getLastName())
+                .setUserEmail(RandomTestData.getEmailAddress())
+                .setGender(RandomTestData.getGender())
+                .setUserNumber(RandomTestData.getUserNumber())
                 .setDateOfBirth(RandomTestData.day, RandomTestData.month, RandomTestData.year)
                 .clickSubmit();
 
-        RegistrationFormPage.shouldHaveFirstName(RandomTestData.invalidFirstName)
-                .shouldHaveLastName(RandomTestData.lastName)
-                .shouldHaveUserEmail(RandomTestData.emailAddress)
-                .shouldHaveGender(RandomTestData.gender)
-                .shouldHaveUserNumber(RandomTestData.userNumber);
+        RegistrationFormPage.shouldHaveFirstName(RandomTestData.getInvalidFirstName())
+                .shouldHaveLastName(RandomTestData.getLastName())
+                .shouldHaveUserEmail(RandomTestData.getEmailAddress())
+                .shouldHaveGender(RandomTestData.getGender())
+                .shouldHaveUserNumber(RandomTestData.getUserNumber());
     }
 
 }
