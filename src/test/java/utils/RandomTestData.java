@@ -31,10 +31,21 @@ public class RandomTestData {
     public Date getRandomDate() {
         return faker.date().birthday(1, 100);
     }
+    public String getDay() {
+        return day;
+    }
 
-    public String day;
-    public String month;
-    public String year;
+    public String getMonth() {
+        return month;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    private String day;
+    private String month;
+    private String year;
 
     public RandomTestData() {
         Calendar cal = Calendar.getInstance();
