@@ -9,28 +9,45 @@ import java.util.Locale;
 public class RandomTestData {
 
     private final Faker faker = new Faker(new Locale("en"));
+    private String day;
+    private String month;
+    private String year;
+    private static final String[] SUBJECTS = {"Hindi", "English", "Maths", "Physics", "Chemistry", "Biology", "Computer Science",
+            "Commerce", "Accounting", "Economics", "Arts", "Social Studies", "History", "Civics"};
+    private static final String[] HOBBIES = {"Sports", "Reading", "Music"};
+    private static final String[] INVALID_NAMES = {"", "   ", "1234", "#$%^?"};
+    private static final String[] GENDERS = {"Male", "Female", "Other"};
+    private static final String[] UPLOADPICTURES = {"AGE_TEST.jpg", "arrow.png", "puzzle.webp"};
+    private static final String[] STATES = {"NCR", "Uttar Pradesh", "Haryana", "Rajasthan"};
 
     public String getFirstName() {
         return faker.name().firstName();
     }
+
     public String getInvalidFirstName() {
-        return faker.options().option("", "   ", "1234", "#$%^?");
+        return faker.options().option(INVALID_NAMES);
     }
+
     public String getLastName() {
         return faker.name().lastName();
     }
-    public String getEmailAddress()  {
+
+    public String getEmailAddress() {
         return faker.internet().emailAddress();
     }
-    public String getGender()  {
-        return faker.options().option("Male", "Female", "Other");
+
+    public String getGender() {
+        return faker.options().option(GENDERS);
     }
+
     public String getUserNumber() {
         return faker.phoneNumber().subscriberNumber(10);
     }
+
     public Date getRandomDate() {
         return faker.date().birthday(1, 100);
     }
+
     public String getDay() {
         return day;
     }
@@ -43,10 +60,6 @@ public class RandomTestData {
         return year;
     }
 
-    private String day;
-    private String month;
-    private String year;
-
     public RandomTestData() {
         Calendar cal = Calendar.getInstance();
         cal.setTime(getRandomDate());
@@ -58,22 +71,25 @@ public class RandomTestData {
 
     public String getSubjects() {
         return faker.options().
-                option("Hindi", "English", "Maths", "Physics", "Chemistry", "Biology", "Computer Science",
-                        "Commerce", "Accounting", "Economics", "Arts", "Social Studies", "History", "Civics");
+                option(SUBJECTS);
     }
 
     public String getHobbiesCheckbox() {
-        return faker.options().option("Sports", "Reading", "Music");
+        return faker.options().option(HOBBIES);
     }
+
     public String getUploadPicture() {
-        return faker.options().option("AGE_TEST.jpg", "arrow.png", "puzzle.webp");
+        return faker.options().option(UPLOADPICTURES);
     }
+
     public String getCurrentAddress() {
         return faker.address().streetAddressNumber();
     }
+
     public String getState() {
-        return faker.options().option("NCR", "Uttar Pradesh", "Haryana", "Rajasthan");
+        return faker.options().option(STATES);
     }
+
     public String getCity() {
         return getRandomCity(getState());
     }
