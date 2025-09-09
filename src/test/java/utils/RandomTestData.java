@@ -17,8 +17,12 @@ public class RandomTestData {
     private static final String[] HOBBIES = {"Sports", "Reading", "Music"};
     private static final String[] INVALID_NAMES = {"", "   ", "1234", "#$%^?"};
     private static final String[] GENDERS = {"Male", "Female", "Other"};
-    private static final String[] UPLOADPICTURES = {"AGE_TEST.jpg", "arrow.png", "puzzle.webp"};
+    private static final String[] UPLOAD_PICTURES = {"AGE_TEST.jpg", "arrow.png", "puzzle.webp"};
     private static final String[] STATES = {"NCR", "Uttar Pradesh", "Haryana", "Rajasthan"};
+    private static final String[] NCR_CITIES = {"Delhi", "Gurgaon", "Noida"};
+    private static final String[] UP_CITIES = {"Agra", "Lucknow", "Merrut"};
+    private static final String[] HARYANA_CITIES = {"Karnal", "Panipat"};
+    private static final String[] RAJASTHAN_CITIES = {"Jaipur", "Jaiselmer"};
 
     public String getFirstName() {
         return faker.name().firstName();
@@ -79,7 +83,7 @@ public class RandomTestData {
     }
 
     public String getUploadPicture() {
-        return faker.options().option(UPLOADPICTURES);
+        return faker.options().option(UPLOAD_PICTURES);
     }
 
     public String getCurrentAddress() {
@@ -97,13 +101,13 @@ public class RandomTestData {
     public String getRandomCity(String state) {
         switch (state) {
             case "NCR":
-                return faker.options().option("Delhi", "Gurgaon", "Noida");
+                return faker.options().option(NCR_CITIES);
             case "Uttar Pradesh":
-                return faker.options().option("Agra", "Lucknow", "Merrut");
+                return faker.options().option(UP_CITIES);
             case "Haryana":
-                return faker.options().option("Karnal", "Panipat");
+                return faker.options().option(HARYANA_CITIES);
             case "Rajasthan":
-                return faker.options().option("Jaipur", "Jaiselmer");
+                return faker.options().option(RAJASTHAN_CITIES);
             default:
                 return "Unknown";
 
